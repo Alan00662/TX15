@@ -78,7 +78,7 @@ static inline uint16_t atk_md0350_get_chip_id(void)
     uint16_t chip_id;
     
     atk_md0350_gpio_write_cmd(0x04);
-    chip_id = atk_md0350_gpio_read_dat();
+    chip_id = atk_md0350_gpio_read_dat(); //1st
     chip_id = atk_md0350_gpio_read_dat();
     chip_id = atk_md0350_gpio_read_dat() << 8;
     chip_id |= (atk_md0350_gpio_read_dat()) & 0x00FF;
@@ -819,9 +819,9 @@ uint8_t atk_md0350_init(void)
 //    }
 //    else
 //    {
-//        g_atk_md0350_sta.chip_id = chip_id;
-//        g_atk_md0350_sta.width = ATK_MD0350_LCD_WIDTH;
-//        g_atk_md0350_sta.height = ATK_MD0350_LCD_HEIGHT;
+        g_atk_md0350_sta.chip_id = Mychip_id;
+        g_atk_md0350_sta.width = ATK_MD0350_LCD_WIDTH;
+        g_atk_md0350_sta.height = ATK_MD0350_LCD_HEIGHT;
 //    }
     atk_md0350_reg_init();
     atk_md0350_set_disp_dir(ATK_MD0350_LCD_DISP_DIR_0);

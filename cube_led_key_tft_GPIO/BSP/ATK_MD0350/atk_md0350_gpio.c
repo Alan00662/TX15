@@ -60,8 +60,6 @@ void ATK_MD0350_GPIO_DATA(uint16_t data)
 	TFT_B1(DB1);
 	TFT_B0(DB0);
 	
-
-
 }
 
 /**
@@ -134,11 +132,11 @@ void atk_md0350_gpio_init(void)
 	gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
 	HAL_GPIO_Init(GPIOJ, &gpio_init_struct);
   
-//    ATK_MD0350_GPIO_RS(1);
-//    ATK_MD0350_GPIO_CS(1);
-//    ATK_MD0350_GPIO_RD(1);
-//    ATK_MD0350_GPIO_WR(1);
-//    ATK_MD0350_GPIO_DATA(0xFFFF);
+    ATK_MD0350_GPIO_RS(1);
+    ATK_MD0350_GPIO_CS(1);
+    ATK_MD0350_GPIO_RD(1);
+    ATK_MD0350_GPIO_WR(1);
+    ATK_MD0350_GPIO_DATA(0xFFFF);
 
 
 }
@@ -237,6 +235,20 @@ uint16_t ATK_MD0350_GPIO_READ_DATA(void)
 
 }
 
+uint16_t tft_gpio_read_dat(void)
+{
+	uint16_t dat;
+    ATK_MD0350_GPIO_RS(1);
+    ATK_MD0350_GPIO_CS(0);
+    ATK_MD0350_GPIO_RD(0);
+//    __nop();
+//    __nop();
+	HAL_Delay(1);
+    dat = ATK_MD0350_GPIO_READ_DATA();
+    ATK_MD0350_GPIO_RD(1);
+    ATK_MD0350_GPIO_CS(1);
+	return dat;
+}
 /**
  * @brief       ATK-MD0350模块通过GPIO接口读数据
  * @param       无
@@ -262,24 +274,24 @@ uint16_t atk_md0350_gpio_read_dat(void)
 //    gpio_init_struct.Speed  = GPIO_SPEED_FREQ_HIGH;
 //    HAL_GPIO_Init(ATK_MD0350_GPIO_DATA_GPIO_PORT, &gpio_init_struct);
 //数据引脚 
-//  gpio_init_struct.Pin = TFT_R0_PIN;
-//  gpio_init_struct.Mode = GPIO_MODE_INPUT;
-//  gpio_init_struct.Pull = GPIO_PULLUP;
-//  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
-//  HAL_GPIO_Init(GPIOI, &gpio_init_struct);
-//  
-//  gpio_init_struct.Pin = TFT_B4_PIN|TFT_G5_PIN;
-//  gpio_init_struct.Mode = GPIO_MODE_INPUT;
-//  gpio_init_struct.Pull = GPIO_PULLUP;
-//  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
-//  HAL_GPIO_Init(GPIOK, &gpio_init_struct);
-//  
-//  gpio_init_struct.Pin = TFT_B0_PIN|TFT_B1_PIN|TFT_B2_PIN|TFT_B3_PIN|TFT_G0_PIN|TFT_G1_PIN|TFT_G2_PIN|TFT_G3_PIN|
-//						TFT_G4_PIN|TFT_R1_PIN|TFT_R2_PIN|TFT_R3_PIN|TFT_R4_PIN;
-//  gpio_init_struct.Mode = GPIO_MODE_INPUT;
-//  gpio_init_struct.Pull = GPIO_PULLUP;
-//  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
-//  HAL_GPIO_Init(GPIOJ, &gpio_init_struct);
+  gpio_init_struct.Pin = TFT_R0_PIN;
+  gpio_init_struct.Mode = GPIO_MODE_INPUT;
+  gpio_init_struct.Pull = GPIO_PULLUP;
+  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOI, &gpio_init_struct);
+  
+  gpio_init_struct.Pin = TFT_B4_PIN|TFT_G5_PIN;
+  gpio_init_struct.Mode = GPIO_MODE_INPUT;
+  gpio_init_struct.Pull = GPIO_PULLUP;
+  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOK, &gpio_init_struct);
+  
+  gpio_init_struct.Pin = TFT_B0_PIN|TFT_B1_PIN|TFT_B2_PIN|TFT_B3_PIN|TFT_G0_PIN|TFT_G1_PIN|TFT_G2_PIN|TFT_G3_PIN|
+						TFT_G4_PIN|TFT_R1_PIN|TFT_R2_PIN|TFT_R3_PIN|TFT_R4_PIN;
+  gpio_init_struct.Mode = GPIO_MODE_INPUT;
+  gpio_init_struct.Pull = GPIO_PULLUP;
+  gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOJ, &gpio_init_struct);
 /***************************************************/
     ATK_MD0350_GPIO_RS(1);
     ATK_MD0350_GPIO_CS(0);

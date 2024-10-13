@@ -74,5 +74,6 @@ void atk_md0350_gpio_write_cmd(uint16_t cmd);               /* ATK-MD0350Ä£¿éÍ¨¹
 void atk_md0350_gpio_write_dat(uint16_t dat);               /* ATK-MD0350Ä£¿éÍ¨¹ıGPIO½Ó¿ÚĞ´Êı¾İ */
 void atk_md0350_gpio_write_reg(uint16_t reg, uint16_t dat); /* ATK-MD0350Ä£¿éÍ¨¹ıGPIO½Ó¿ÚĞ´¼Ä´æÆ÷ */
 uint16_t atk_md0350_gpio_read_dat(void);                    /* ATK-MD0350Ä£¿éÍ¨¹ıGPIO½Ó¿Ú¶ÁÊı¾İ */
+uint16_t tft_gpio_read_dat(void);
 void TFT_input_Mode(void);
 #endif
