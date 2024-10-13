@@ -10,13 +10,13 @@
       <TargetName>cube_led</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32H750XBHx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32H7xx_DFP.3.1.0</PackID>
+          <PackID>Keil.STM32H7xx_DFP.3.1.1</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2001FFFF) IRAM2(0x24000000-0x2407FFFF) IROM(0x8000000-0x801FFFF) CLOCK(12000000) FPU3(DFPU) CPUTYPE("Cortex-M7") ELITTLE TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H750xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\BSP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\BSP;..\BSP\ATK_MD0350</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -528,6 +528,26 @@
               <FileName>tft.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\tft.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_md0350.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ATK_MD0350\atk_md0350.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_md0350_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ATK_MD0350\atk_md0350_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_md0350_touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ATK_MD0350\atk_md0350_touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_md0350_touch_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ATK_MD0350\atk_md0350_touch_spi.c</FilePath>
             </File>
           </Files>
         </Group>
