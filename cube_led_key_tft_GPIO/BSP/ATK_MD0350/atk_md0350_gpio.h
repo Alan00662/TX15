@@ -73,7 +73,8 @@ void atk_md0350_gpio_init(void);                            /* ATK-MD0350模块GPI
 void atk_md0350_gpio_write_cmd(uint16_t cmd);               /* ATK-MD0350模块通过GPIO接口写命令 */
 void atk_md0350_gpio_write_dat(uint16_t dat);               /* ATK-MD0350模块通过GPIO接口写数据 */
 void atk_md0350_gpio_write_reg(uint16_t reg, uint16_t dat); /* ATK-MD0350模块通过GPIO接口写寄存器 */
-uint16_t atk_md0350_gpio_read_dat(void);                    /* ATK-MD0350模块通过GPIO接口读数据 */
+//uint16_t atk_md0350_gpio_read_dat(void);                    /* ATK-MD0350模块通过GPIO接口读数据 */
 uint16_t tft_gpio_read_dat(void);
+
 void TFT_input_Mode(void);
 #endif

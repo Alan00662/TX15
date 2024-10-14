@@ -31,19 +31,9 @@ int main(void)
 //	TFT_Init();
 
 
-	
-//	atk_md0350_gpio_init();
-//	    HAL_GPIO_WritePin(GPIOI, TFT_R0_PIN, GPIO_PIN_RESET);
 //		HAL_Delay(100);
-//	ATK_MD0350_GPIO_DATA(0x7365);
 //	HAL_Delay(500);
-//	TFT_input_Mode();
 //	 HAL_Delay(100);
-//	  	Mydata = ATK_MD0350_GPIO_READ_DATA();
-//if(Mydata==0x7365)	
-//{
-//	HAL_GPIO_WritePin(GPIOI, LED2_Pin, GPIO_PIN_SET);
-//}
 
 //	Mydata = ATK_MD0350_GPIO_READ_DATA();
     ret = atk_md0350_init();
@@ -56,8 +46,8 @@ int main(void)
   while (1)
   {
 
-//	HAL_GPIO_TogglePin(GPIOI, LED2_Pin);
-//	HAL_Delay(300);
+	HAL_GPIO_TogglePin(GPIOI, LED2_Pin);
+	HAL_Delay(1000);
 //	atk_md0350_show_string(10, 10, ATK_MD0350_LCD_WIDTH, 32, "STM32", ATK_MD0350_LCD_FONT_32, ATK_MD0350_RED);
   }
 

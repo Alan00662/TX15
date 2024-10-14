@@ -29,6 +29,40 @@ extern "C" {
 #define TFT_RS_GPIO_PIN             GPIO_PIN_12
 #define TFT_RS_GPIO_CLK_ENABLE()    do { __HAL_RCC_GPIOI_CLK_ENABLE(); } while (0)
 
+#define TFT_RST_GPIO_PORT            GPIOK
+#define TFT_RST_GPIO_PIN             GPIO_PIN_2
+#define TFT_RST_GPIO_CLK_ENABLE()    do { __HAL_RCC_GPIOK_CLK_ENABLE(); } while (0)
+
+#define TFT_BL(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
+#define TFT_WR(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_WR_GPIO_PORT, TFT_WR_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_WR_GPIO_PORT, TFT_WR_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
+#define TFT_RD(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_RD_GPIO_PORT, TFT_RD_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_RD_GPIO_PORT, TFT_RD_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
+#define TFT_CS(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_CS_GPIO_PORT, TFT_CS_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_CS_GPIO_PORT, TFT_CS_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
+#define TFT_RS(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_RS_GPIO_PORT, TFT_RS_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_RS_GPIO_PORT, TFT_RS_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
+#define TFT_RST(x)                   do { (x) ?                                                                  \
+                                        HAL_GPIO_WritePin(TFT_RST_GPIO_PORT, TFT_RST_GPIO_PIN, GPIO_PIN_SET):     \
+                                        HAL_GPIO_WritePin(TFT_RST_GPIO_PORT, TFT_RST_GPIO_PIN, GPIO_PIN_RESET);   \
+                                    } while (0)
+
 
 #define TFT_B0_PORT            GPIOJ
 #define TFT_B0_PIN             GPIO_PIN_12
@@ -78,11 +112,6 @@ extern "C" {
 #define TFT_R4_PORT            GPIOJ
 #define TFT_R4_PIN             GPIO_PIN_3
 #define TFT_R4_CLK_ENABLE()    do { __HAL_RCC_GPIOJ_CLK_ENABLE(); } while (0)
-/* LCDÒý½Å²Ù×÷ */
-#define TFT_BL(x)                   do { (x) ?                                                                  \
-                                        HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_SET):     \
-                                        HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_RESET);   \
-                                    } while (0)
 
 #define TFT_B0(x)                   do { (x) ?                                                                  \
                                         HAL_GPIO_WritePin(TFT_B0_PORT, TFT_B0_PIN, GPIO_PIN_SET):     \
@@ -148,6 +177,8 @@ extern "C" {
                                         HAL_GPIO_WritePin(TFT_R4_PORT, TFT_R4_PIN, GPIO_PIN_SET):     \
                                         HAL_GPIO_WritePin(TFT_R4_PORT, TFT_R4_PIN, GPIO_PIN_RESET);   \
                                     } while (0)
+
+									
 
 void TFT_Init(void);
 #ifdef __cplusplus
