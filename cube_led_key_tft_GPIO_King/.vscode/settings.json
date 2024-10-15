@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "tft.h": "c",
+        "atk_md0350_font.h": "c",
+        "atk_md0350_gpio.h": "c",
+        "stm32h7xx_hal.h": "c",
+        "tft_display.h": "c",
+        "tft_gpio.h": "c",
+        "bit": "c",
+        "compare": "c",
+        "limits": "c",
+        "new": "c",
+        "font.h": "c"
+    }
+}
