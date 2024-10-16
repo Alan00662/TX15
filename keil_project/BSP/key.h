@@ -108,6 +108,24 @@ extern "C"
 #define TRIM_LHR HAL_GPIO_ReadPin(TRIM_LHR_GPIO_PORT, TRIM_LHR_GPIO_PIN)
 #define TRIM_LHL HAL_GPIO_ReadPin(TRIM_LHL_GPIO_PORT, TRIM_LHL_GPIO_PIN)
 
+#define SE_H_GPIO_PORT          GPIOJ
+#define SE_H_GPIO_PIN           GPIO_PIN_6
+#define SE_H_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOJ_CLK_ENABLE(); } while (0)
+#define SE_L_GPIO_PORT          GPIOJ
+#define SE_L_GPIO_PIN           GPIO_PIN_5
+#define SE_L_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOJ_CLK_ENABLE(); } while (0)
+#define SF_H_GPIO_PORT          GPIOK
+#define SF_H_GPIO_PIN           GPIO_PIN_6
+#define SF_H_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOK_CLK_ENABLE(); } while (0)
+#define SF_L_GPIO_PORT          GPIOI
+#define SF_L_GPIO_PIN           GPIO_PIN_4
+#define SF_L_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOI_CLK_ENABLE(); } while (0)
+
+#define SWITCH_SE_H HAL_GPIO_ReadPin(SE_H_GPIO_PORT, SE_H_GPIO_PIN)
+#define SWITCH_SE_L HAL_GPIO_ReadPin(SE_L_GPIO_PORT, SE_L_GPIO_PIN)
+#define SWITCH_SF_H HAL_GPIO_ReadPin(SF_H_GPIO_PORT, SF_H_GPIO_PIN)
+#define SWITCH_SF_L HAL_GPIO_ReadPin(SF_L_GPIO_PORT, SF_L_GPIO_PIN)
+
 /* 键值定义 */
 enum
 {
@@ -148,10 +166,22 @@ typedef struct trim_info
 } trim_info_t;
 extern trim_info_t Trim_info;
 
+typedef struct switch_info
+{
+    uint8_t seh;  /* data */
+    uint8_t sel; /* data */
+    uint8_t sfh;   /* data */
+    uint8_t sfl; /* data */
+
+} switch_info_t;
+extern switch_info_t Switch_info;
+
 void KEY_GPIO_init(void);
 void key_scan_Loop(void);
 void TRIM_GPIO_init(void);
+void SWITCH_GPIO_init(void);
 void trim_scan_Loop(void);
+void switch_scan_Loop(void);
 #ifdef __cplusplus
 }
 #endif

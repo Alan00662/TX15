@@ -27,6 +27,7 @@ int main(void)
     MX_GPIO_Init();
     KEY_GPIO_init();
     TRIM_GPIO_init();
+    SWITCH_GPIO_init();
     TFT_GPIO_init();
     TFT_init();
     MX_TIM8_Init();
@@ -40,6 +41,7 @@ int main(void)
 
         key_scan_Loop();
         trim_scan_Loop();
+        switch_scan_Loop();
         Menu_Display_Loop();
     }
 }

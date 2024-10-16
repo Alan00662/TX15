@@ -61,10 +61,24 @@ static void TFT_set_add(uint16_t X,uint16_t Y,uint16_t X_END,uint16_t Y_END)
 void TFT_Clear(uint16_t back_c)									
 {
 	unsigned int ROW=0,column=0;
-	TFT_set_add(0x0000,0x0000,TFT_COLUMN_NUMBER-1,TFT_LINE_NUMBER-1);
+	TFT_set_add(0,0,TFT_COLUMN_NUMBER-1,TFT_LINE_NUMBER-1);
 	for(ROW = 0;ROW < TFT_LINE_NUMBER;ROW++)             //ROW loop
 	{ 
 		for(column=0;column<TFT_COLUMN_NUMBER;column++)  //column loop
+		{         
+			TFT_send_data(~back_c);
+		}
+	}
+}
+
+//清除局部位置数据，刷上背景颜色
+static void TFT_Clear_char(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t back_c)									
+{
+	unsigned int ROW=0,column=0;
+	TFT_set_add(x1,y1,x2,y2);
+	for(ROW = y1;ROW<= y2;ROW++)             //ROW loop
+	{ 
+		for(column=x1;column <= x2;column++)  //column loop
 		{         
 			TFT_send_data(~back_c);
 		}
@@ -280,7 +294,6 @@ void TFT_show_char(uint16_t x, uint16_t y, char ch, tft_lcd_font_t font, uint16_
     uint8_t height_index = 0;
     
     ch_offset = ch - ' ';
-    
     switch (font)
     {
         case TFT_FONT_12:
@@ -332,7 +345,9 @@ void TFT_show_char(uint16_t x, uint16_t y, char ch, tft_lcd_font_t font, uint16_
     {
         return;
     }
-    
+	
+    TFT_Clear_char(x,y,x + ch_width,y + ch_height,WHITE); //清除局部背景颜色
+	
     for (byte_index=0; byte_index<ch_size; byte_index++)
     {
         byte_code = ch_code[byte_index];

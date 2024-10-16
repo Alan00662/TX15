@@ -30,12 +30,19 @@ void KEY_GPIO_init(void)
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(KEY_MDL_GPIO_PORT, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = KEY_PAGE_L_GPIO_PIN | KEY_TELE_GPIO_PIN | KEY_RTN_GPIO_PIN | KEY_ENTER_GPIO_PIN;
+    GPIO_InitStruct.Pin = KEY_PAGE_L_GPIO_PIN | KEY_RTN_GPIO_PIN | KEY_ENTER_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+	
+	GPIO_InitStruct.Pin = KEY_TELE_GPIO_PIN ;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 }
+
 void TRIM_GPIO_init(void)
 {
 
@@ -72,6 +79,34 @@ void TRIM_GPIO_init(void)
     HAL_GPIO_Init(TRIM_LHL_GPIO_PORT, &GPIO_InitStruct);
 }
 
+void SWITCH_GPIO_init(void)
+{
+
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    /* GPIO Ports Clock Enable */
+    __HAL_RCC_GPIOI_CLK_ENABLE();
+    __HAL_RCC_GPIOJ_CLK_ENABLE();
+    __HAL_RCC_GPIOK_CLK_ENABLE();
+
+    GPIO_InitStruct.Pin = SF_L_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(SF_L_GPIO_PORT, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = SE_H_GPIO_PIN|SE_L_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(SE_H_GPIO_PORT, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = SF_H_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(SF_H_GPIO_PORT, &GPIO_InitStruct);
+}
 
 key_info_t Key_info = {0};
 uint32_t key_scan_tick = 0;
@@ -112,5 +147,22 @@ void trim_scan_Loop(void)
         
         Trim_info.lhl = TRIM_LHL;
         trim_scan_tick = HAL_GetTick();
+	}
+}
+
+switch_info_t Switch_info = {0};
+uint32_t switch_scan_tick = 0;
+void switch_scan_Loop(void)
+{
+	if((HAL_GetTick() - switch_scan_tick) > 25)
+	{
+        Switch_info.seh = SWITCH_SE_H;
+        
+        Switch_info.sel = SWITCH_SE_L;
+        
+        Switch_info.sfh = SWITCH_SF_H;
+        
+        Switch_info.sfl = SWITCH_SF_L;
+        switch_scan_tick = HAL_GetTick();
 	}
 }
