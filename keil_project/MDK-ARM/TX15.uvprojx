@@ -414,6 +414,11 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\tim.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -538,6 +543,11 @@
               <FileName>tft_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\tft_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\interface.c</FilePath>
             </File>
           </Files>
         </Group>

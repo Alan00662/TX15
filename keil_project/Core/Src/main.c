@@ -1,14 +1,14 @@
 
 #include "main.h"
 #include "gpio.h"
-
+#include "tim.h"
 #include "tft_display.h"
-
+#include "interface.h"
 void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t ret = 83;
 
-uint16_t Mydata = 0;
+uint16_t pwm_value = 51200;
 
 /**
   * @brief  The application entry point.
@@ -16,7 +16,6 @@ uint16_t Mydata = 0;
   */
 int main(void)
 {
-
 
   MPU_Config();
 
@@ -28,40 +27,21 @@ int main(void)
 
 	TFT_GPIO_init();
 	TFT_init();
+	MX_TIM8_Init();
+	
+	HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_4);
+	__HAL_TIM_SET_COMPARE(&htim8,TIM_CHANNEL_4,pwm_value);
 	TFT_Clear(WHITE);  
   while (1)
   {
-
-	HAL_GPIO_TogglePin(GPIOI, LED2_Pin);
-
-//	TFT_Clear(RED);
-//	HAL_Delay(1000);
-//	TFT_Clear(GREEN);
-//	HAL_Delay(1000);
-//	TFT_Clear(BLUE);
-//	HAL_Delay(1000);
-//	TFT_Clear(BLACK);
-//	HAL_Delay(1000);
-//	HAL_Delay(1000);
-
-
-	TFT_show_string(100,0,180,"RadioMaster_TX15",TFT_FONT_32,BLUE); 
-	TFT_show_string(60,200,100,"RadioMaster",TFT_FONT_16,BLACK); 
-	TFT_show_char(40,40,'A',TFT_FONT_16,BROWN);
-	TFT_show_num(50,60,ret,2,TFT_FONT_16,RED);
-//	TFT_show_pic(40,40,120,120,picture_tab);
-	TFT_show_Chinese_16x16(10,160,BLACK,CYAN,0);
-	TFT_show_Chinese_16x16(36,160,GREEN,WHITE,1);
-	TFT_show_Chinese_16x16(60,160,RED,WHITE,2);
-	TFT_show_Chinese_16x16(76,160,BLUE,WHITE,3);
-	TFT_show_Chinese_16x16(92,160,GREEN,WHITE,4);
-	TFT_show_Chinese_16x16(118,160,BLUE,WHITE,5);
-	TFT_show_Chinese_16x16(134,160,RED,WHITE,6);
-	HAL_Delay(1000);
+	led2_bink(400);
+	Menu_Display_Loop();
 	
   }
 
 }
+
+
 
 /**
   * @brief System Clock Configuration
