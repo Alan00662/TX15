@@ -549,6 +549,11 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\interface.c</FilePath>
             </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\key.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

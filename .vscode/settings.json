@@ -5,6 +5,11 @@
         "tft_display.h": "c",
         "gpio.h": "c",
         "compare": "c",
-        "tim.h": "c"
+        "tim.h": "c",
+        "tft_gpio.h": "c",
+        "key.h": "c",
+        "bit": "c",
+        "limits": "c",
+        "new": "c"
     }
 }
