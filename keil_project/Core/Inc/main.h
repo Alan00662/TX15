@@ -69,7 +69,7 @@ void Error_Handler(void);
 
 #define PWR_SWITCH_Pin GPIO_PIN_4
 #define PWR_SWITCH_GPIO_Port GPIOA
-
+extern uint8_t key_lalue;
 extern uint16_t pwm_value;
 /* USER CODE BEGIN Private defines */
 void led0_bink(uint16_t ms);
