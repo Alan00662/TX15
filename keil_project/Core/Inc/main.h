@@ -53,7 +53,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+#define BackLight_USE_PWM 1 
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -70,8 +70,11 @@ void Error_Handler(void);
 #define PWR_SWITCH_Pin GPIO_PIN_4
 #define PWR_SWITCH_GPIO_Port GPIOA
 
+extern uint16_t pwm_value;
 /* USER CODE BEGIN Private defines */
-
+void led0_bink(uint16_t ms);
+void led1_bink(uint16_t ms);
+void led2_bink(uint16_t ms);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -73,8 +73,10 @@ void TFT_Clear(uint16_t back_c)
 
 void TFT_init(void)        ////ST7796
 {
-	TFT_RD(1);
+	#if BackLight_USE_PWM ==0
 	TFT_BL(1);
+	#endif
+	TFT_RD(1);
 	TFT_RST(0);
 	HAL_Delay(200);	 
 	TFT_RST(1);	
@@ -625,5 +627,5 @@ void Picture_Display(const uint8_t *ptr_pic)
 		number++;
         TFT_send_data(pdata);		
     }
-  }
+}
 

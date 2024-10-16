@@ -6,13 +6,13 @@
 extern "C" {
 #endif
 
-#include "stm32h7xx_hal.h"
+#include "main.h"
 
-
+#if BackLight_USE_PWM == 0 
 #define TFT_BL_GPIO_PORT            GPIOG
 #define TFT_BL_GPIO_PIN             GPIO_PIN_10
 #define TFT_BL_GPIO_CLK_ENABLE()    do { __HAL_RCC_GPIOG_CLK_ENABLE(); } while (0)
-
+#endif
 
 #define TFT_WR_GPIO_PORT            GPIOI
 #define TFT_WR_GPIO_PIN             GPIO_PIN_14
@@ -34,12 +34,12 @@ extern "C" {
 #define TFT_RST_GPIO_PORT            GPIOK
 #define TFT_RST_GPIO_PIN             GPIO_PIN_2
 #define TFT_RST_GPIO_CLK_ENABLE()    do { __HAL_RCC_GPIOK_CLK_ENABLE(); } while (0)
-
+#if BackLight_USE_PWM == 0 
 #define TFT_BL(x)                   do { (x) ?                                                                  \
                                         HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_SET):     \
                                         HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_RESET);   \
                                     } while (0)
-
+#endif
 #define TFT_WR(x)                   do { (x) ?                                                                  \
                                         HAL_GPIO_WritePin(TFT_WR_GPIO_PORT, TFT_WR_GPIO_PIN, GPIO_PIN_SET):     \
                                         HAL_GPIO_WritePin(TFT_WR_GPIO_PORT, TFT_WR_GPIO_PIN, GPIO_PIN_RESET);   \

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "interface.h": "c",
+        "main.h": "c",
+        "tft_display.h": "c",
+        "gpio.h": "c",
+        "compare": "c",
+        "tim.h": "c"
+    }
+}

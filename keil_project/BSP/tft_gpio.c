@@ -15,7 +15,7 @@ void TFT_GPIO_init(void)
   __HAL_RCC_GPIOJ_CLK_ENABLE();
   __HAL_RCC_GPIOK_CLK_ENABLE();
   
-
+#if BackLight_USE_PWM == 0 
   GPIO_InitStruct.Pin = TFT_BL_GPIO_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -24,7 +24,8 @@ void TFT_GPIO_init(void)
   
   HAL_GPIO_WritePin(TFT_BL_GPIO_PORT, TFT_BL_GPIO_PIN, GPIO_PIN_SET);
   
-
+#endif
+  
   GPIO_InitStruct.Pin = TFT_WR_GPIO_PIN|TFT_CS_GPIO_PIN|TFT_RS_GPIO_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

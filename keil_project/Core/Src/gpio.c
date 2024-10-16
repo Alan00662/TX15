@@ -77,9 +77,36 @@ void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 2 */
 
-void power_on(void)
+uint32_t led0_bink_tick = 0;
+void led0_bink(uint16_t ms)
 {
-	
-}
+	if((HAL_GetTick() - led0_bink_tick) > ms)
+	{
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED0_Pin);
+		led0_bink_tick =  HAL_GetTick();
+	}
 
+}	
+
+uint32_t led1_bink_tick = 0;
+void led1_bink(uint16_t ms)
+{
+	if((HAL_GetTick() - led1_bink_tick) > ms)
+	{
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+		led1_bink_tick =  HAL_GetTick();
+	}
+
+}	
+
+uint32_t led2_bink_tick = 0;
+void led2_bink(uint16_t ms)
+{
+	if((HAL_GetTick() - led2_bink_tick) > ms)
+	{
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED2_Pin);
+		led2_bink_tick =  HAL_GetTick();
+	}
+
+}	
 /* USER CODE END 2 */
