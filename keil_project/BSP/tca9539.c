@@ -42,17 +42,23 @@ static void tca9539_gpio_init(void)
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     /* GPIO Ports Clock Enable */
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOE_CLK_ENABLE();
-    __HAL_RCC_GPIOG_CLK_ENABLE();
+    SWITCH_RES_GPIO_CLK_ENABLE();
+    TCA9539_INT_GPIO_CLK_ENABLE();
 
-    GPIO_InitStruct.Pin = KEY_PAGE_R_GPIO_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Pin = SWITCH_RES_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(KEY_PAGE_R_GPIO_PORT, &GPIO_InitStruct);
+    HAL_GPIO_Init(SWITCH_RES_GPIO_PORT, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = TCA9539_INT_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(TCA9539_INT_GPIO_PORT, &GPIO_InitStruct);
+
 }
+
 void tca9539_init(void)
 {
 	tca9539_gpio_init();

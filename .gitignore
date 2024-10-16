@@ -1,4 +1,8 @@
 # TX15
 .vscode/
 keil_project/MDK-ARM/obj
+keil_project/MDK-ARM/*.uvprojx
+keil_project/MDK-ARM/*.uvoptx
+keil_project/MDK-ARM/*.lst
+keil_project/MDK-ARM/*.uvguix.*
 3.5TFT 9针模块蓝板/

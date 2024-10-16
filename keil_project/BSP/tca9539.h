@@ -25,6 +25,15 @@ extern "C" {
 #define SWITCH_RES_GPIO_PIN           GPIO_PIN_4
 #define SWITCH_RES_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOJ_CLK_ENABLE(); } while (0)
 
+/* 引脚定义 */
+#define TCA9539_INT_GPIO_PORT           GPIOD
+#define TCA9539_INT_GPIO_PIN            GPIO_PIN_3
+#define TCA9539_INT_GPIO_CLK_ENABLE()   do { __HAL_RCC_GPIOD_CLK_ENABLE(); } while (0)
+
+/* IO操作 */
+#define SWITCH_INT                     ((HAL_GPIO_ReadPin(PCF8574_INT_GPIO_PORT, PCF8574_INT_GPIO_PIN) == GPIO_PIN_RESET) ? 0 : 1)
+
+
 void tca9539_init(void);
 /**
  * @brief Driver for the TCA9539 IO Expander
