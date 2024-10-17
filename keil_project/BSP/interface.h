@@ -5,6 +5,7 @@
 #include "gpio.h"
 #include "key.h"
 #include "tca9539.h"
+#include "adc.h"
 void Menu_Display_Loop(void);
 #endif /* __INTERFACE_H__ */
 

@@ -12,7 +12,8 @@ static void MPU_Config(void);
 uint8_t key_lalue = 0;
 
 uint16_t pwm_value = 51200;
-
+uint32_t adc_s1 = 0;
+uint32_t adc_s2 = 0;
 /**
  * @brief  The application entry point.
  * @retval int
@@ -34,6 +35,7 @@ int main(void)
     TFT_init();
 	MX_I2C4_Init();
 	tca9539_init();
+	adc1_init();
     MX_TIM8_Init();
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
@@ -45,6 +47,9 @@ int main(void)
         trim_scan_Loop();
         switch_scan_Loop();
 		Read_TCP9539_switch_Loop();
+		adc_s1 = adc_get_result_average(ADC_ADC_S1_CHY,10);
+		adc_s2 = adc_get_result_average(ADC_ADC_S2_CHY,10);
+//		adc_s2 = adc1_get_result_average(ADC_CHANNEL_5);
         Menu_Display_Loop();
     }
 }
