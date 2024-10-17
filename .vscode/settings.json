@@ -10,6 +10,9 @@
         "key.h": "c",
         "bit": "c",
         "limits": "c",
-        "new": "c"
+        "new": "c",
+        "tca9539.h": "c",
+        "stdint.h": "c",
+        "i2c.h": "c"
     }
 }

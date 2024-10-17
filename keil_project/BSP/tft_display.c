@@ -346,7 +346,7 @@ void TFT_show_char(uint16_t x, uint16_t y, char ch, tft_lcd_font_t font, uint16_
         return;
     }
 	
-    TFT_Clear_char(x,y,x + ch_width,y + ch_height,WHITE); //清除局部背景颜色
+//    TFT_Clear_char(x,y,x + ch_width,y + ch_height,WHITE); //清除局部背景颜色
 	
     for (byte_index=0; byte_index<ch_size; byte_index++)
     {
@@ -450,6 +450,8 @@ void TFT_show_string(uint16_t x, uint16_t y, uint16_t width, char *str, tft_lcd_
 
 void TFT_show_xnum(uint16_t x, uint16_t y, uint32_t num, uint8_t len, tft_num_mode_t mode, tft_lcd_font_t font, uint16_t color)
 {
+	static uint32_t num_last = 0;
+
     uint8_t ch_width;
     uint8_t len_index;
     uint8_t num_index;
@@ -507,7 +509,11 @@ void TFT_show_xnum(uint16_t x, uint16_t y, uint32_t num, uint8_t len, tft_num_mo
             return;
         }
     }
-    
+
+	TFT_Clear_char(x,y,x + ch_width * 2,y + ch_width * 2,WHITE);
+
+
+	
     for (len_index=0; len_index<len; len_index++)
     {
         num_index = (num / TFT_pow(10, len - len_index - 1)) % 10;
@@ -526,6 +532,7 @@ void TFT_show_xnum(uint16_t x, uint16_t y, uint32_t num, uint8_t len, tft_num_mo
         
         TFT_show_char(x + ch_width * len_index, y, num_index + '0', font, color);
     }
+
 }
 /**
  * @brief       ATK-MD0350模块LCD显示数字，不显示高位0
@@ -603,7 +610,8 @@ void TFT_show_pic(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8
     {
         return;
     }
-    
+
+	
     TFT_set_column_address(x, x + width - 1);
     TFT_set_page_address(y, y + height - 1);
     TFT_start_write_memory();

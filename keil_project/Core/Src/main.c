@@ -3,8 +3,10 @@
 #include "gpio.h"
 #include "key.h"
 #include "tim.h"
+#include "i2c.h"
 #include "tft_display.h"
 #include "interface.h"
+
 void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t key_lalue = 0;
@@ -30,18 +32,19 @@ int main(void)
     SWITCH_GPIO_init();
     TFT_GPIO_init();
     TFT_init();
+	MX_I2C4_Init();
+	tca9539_init();
     MX_TIM8_Init();
-
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
     TFT_Clear(WHITE);
     while (1)
     {
         led2_bink(400);
-
         key_scan_Loop();
         trim_scan_Loop();
         switch_scan_Loop();
+		Read_TCP9539_switch_Loop();
         Menu_Display_Loop();
     }
 }

@@ -1,5 +1,7 @@
 #include "interface.h"
 
+
+
 uint32_t tft_display_tick = 0;
 void Menu_Display_Loop(void)
 {
@@ -62,6 +64,33 @@ void Menu_Display_Loop(void)
 	TFT_show_num(248,110,Switch_info.sfh,1,TFT_FONT_16,DARKBLUE);
 	TFT_show_string(264,110,72,"sw_sf_l:",TFT_FONT_16,BLUE); 
 	TFT_show_num(336,110,Switch_info.sfl,1,TFT_FONT_16,DARKBLUE);
+
+	TFT_show_string(0,130,30,"k1:",TFT_FONT_16,BROWN); 
+	TFT_show_num(30,130,Tca9539.k1,1,TFT_FONT_16,DARKBLUE);
+	
+	TFT_show_string(46,130,30,"k2:",TFT_FONT_16,BROWN); 
+	TFT_show_num(76,130,Tca9539.k2,1,TFT_FONT_16,DARKBLUE);
+	
+	TFT_show_string(92,130,30,"k3:",TFT_FONT_16,BROWN); 
+	TFT_show_num(122,130,Tca9539.k3,1,TFT_FONT_16,DARKBLUE);
+	
+	TFT_show_string(138,130,30,"k4:",TFT_FONT_16,BROWN); 
+	TFT_show_num(168,130,Tca9539.k4,1,TFT_FONT_16,DARKBLUE);
+	
+	TFT_show_string(184,130,30,"k5:",TFT_FONT_16,BROWN); 
+	TFT_show_num(214,130,Tca9539.k5,1,TFT_FONT_16,DARKBLUE);
+	
+	TFT_show_string(230,130,30,"k6:",TFT_FONT_16,BROWN); 
+	TFT_show_num(260,130,Tca9539.k6,1,TFT_FONT_16,DARKBLUE);
+
+	TFT_show_string(276,130,30,"SA:",TFT_FONT_16,BROWN); 
+	TFT_show_num(306,130,Tca9539_sw.SA,1,TFT_FONT_16,DARKBLUE);
+	TFT_show_string(322,130,30,"SB:",TFT_FONT_16,BROWN); 
+	TFT_show_num(352,130,Tca9539_sw.SB,1,TFT_FONT_16,DARKBLUE);
+	TFT_show_string(368,130,30,"SC:",TFT_FONT_16,BROWN); 
+	TFT_show_num(398,130,Tca9539_sw.SC,1,TFT_FONT_16,DARKBLUE);
+	TFT_show_string(414,130,30,"SD:",TFT_FONT_16,BROWN); 
+	TFT_show_num(444,130,Tca9539_sw.SD,1,TFT_FONT_16,DARKBLUE);
 
 //	TFT_show_pic(40,40,120,120,picture_tab);
 //	TFT_show_Chinese_16x16(10,160,BLACK,CYAN,0);
