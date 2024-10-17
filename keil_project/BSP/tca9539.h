@@ -20,19 +20,47 @@ extern "C" {
 
 #define TC9539_I2C_TIMEOUT 1000
 
-
+/* 引脚定义 */
 #define SWITCH_RES_GPIO_PORT          GPIOJ
 #define SWITCH_RES_GPIO_PIN           GPIO_PIN_4
 #define SWITCH_RES_GPIO_CLK_ENABLE()  do { __HAL_RCC_GPIOJ_CLK_ENABLE(); } while (0)
 
-/* 引脚定义 */
+
 #define TCA9539_INT_GPIO_PORT           GPIOD
 #define TCA9539_INT_GPIO_PIN            GPIO_PIN_3
 #define TCA9539_INT_GPIO_CLK_ENABLE()   do { __HAL_RCC_GPIOD_CLK_ENABLE(); } while (0)
 
-/* IO操作 */
-#define SWITCH_INT                     ((HAL_GPIO_ReadPin(PCF8574_INT_GPIO_PORT, PCF8574_INT_GPIO_PIN) == GPIO_PIN_RESET) ? 0 : 1)
 
+#define SWITCH_INT           ((HAL_GPIO_ReadPin(PCF8574_INT_GPIO_PORT, PCF8574_INT_GPIO_PIN) == GPIO_PIN_RESET) ? 0 : 1)
+
+
+typedef struct tca9539_key_s
+{
+	GPIO_PinState k1;
+    GPIO_PinState k2;
+    GPIO_PinState k3;
+    GPIO_PinState k4;
+    GPIO_PinState k5;
+    GPIO_PinState k6;
+}tca9539_key_t;
+extern tca9539_key_t Tca9539;
+
+typedef struct tca9539_switch_s
+{
+	GPIO_PinState SAL;
+    GPIO_PinState SAH;
+    uint8_t SA;
+    GPIO_PinState SBL;
+    GPIO_PinState SBH;
+    uint8_t SB;
+    GPIO_PinState SCL;
+    GPIO_PinState SCH;
+    uint8_t SC;
+    GPIO_PinState SDL;
+    GPIO_PinState SDH;
+    uint8_t SD;
+}tca9539_switch_t;
+extern tca9539_switch_t Tca9539_sw;
 
 void tca9539_init(void);
 /**
@@ -64,6 +92,7 @@ void tca9539_readInputs(uint8_t* io0, uint8_t* io1);
  * Clears any pending interrupts by reading from both IO ports
  */
 void tca9539_clearInterrupts();
+void tca9539_read_bit(void);
 void Read_TCP9539_switch_Loop(void);
 #ifdef __cplusplus
 }
