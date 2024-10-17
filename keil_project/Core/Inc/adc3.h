@@ -1,19 +1,19 @@
 /**
  ****************************************************************************************************
  * @file        adc3.h
- * @author      ÕıµãÔ­×ÓÍÅ¶Ó(ALIENTEK)
+ * @author      æ­£ç‚¹åŸå­å›¢é˜Ÿ(ALIENTEK)
  * @version     V1.0
  * @date        2023-06-12
- * @brief       ADC3Çı¶¯´úÂë
- * @license     Copyright (c) 2020-2032, ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾
+ * @brief       ADC3é©±åŠ¨ä»£ç 
+ * @license     Copyright (c) 2020-2032, å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸
  ****************************************************************************************************
  * @attention
  * 
- * ÊµÑéÆ½Ì¨:ÕıµãÔ­×Ó ±±¼«ĞÇ H750¿ª·¢°å
- * ÔÚÏßÊÓÆµ:www.yuanzige.com
- * ¼¼ÊõÂÛÌ³:www.openedv.com
- * ¹«Ë¾ÍøÖ·:www.alientek.com
- * ¹ºÂòµØÖ·:openedv.taobao.com
+ * å®éªŒå¹³å°:æ­£ç‚¹åŸå­ åŒ—ææ˜Ÿ H750å¼€å‘æ¿
+ * åœ¨çº¿è§†é¢‘:www.yuanzige.com
+ * æŠ€æœ¯è®ºå›:www.openedv.com
+ * å…¬å¸ç½‘å€:www.alientek.com
+ * è´­ä¹°åœ°å€:openedv.taobao.com
  * 
  ****************************************************************************************************
  */
@@ -21,12 +21,21 @@
 #ifndef __ADC3_H
 #define __ADC3_H
 
-#include "./SYSTEM/sys/sys.h"
+#include "main.h"
 
-/* º¯ÊıÉùÃ÷ */
-void adc3_init(void);                                               /* ³õÊ¼»¯ADC3 */
-uint32_t adc3_get_result(uint32_t channel);                         /* »ñÈ¡ADC3½á¹û */
-uint32_t adc3_get_result_average(uint32_t channel, uint8_t times);  /* ¾ùÖµÂË²¨»ñÈ¡ADC3½á¹û */
-int32_t adc3_get_temperature(void);                                 /* »ñÈ¡ÄÚ²¿ÎÂ¶È´«¸ĞÆ÷½á¹û */
+/* ADCå®šä¹‰ */
+#define ADC_ADC_BAT                                ADC3
+#define ADC_ADC_BAT_CLK_ENABLE()                   do { __HAL_RCC_ADC3_CLK_ENABLE(); } while (0)
+#define ADC_ADC_BAT_CHY                            ADC_CHANNEL_11
+#define ADC_ADC_BAT_CHY_GPIO_PORT                  GPIOH
+#define ADC_ADC_BAT_CHY_GPIO_PIN                   GPIO_PIN_1
+#define ADC_ADC_BAT_CHY_GPIO_CLK_ENABLE()          do { __HAL_RCC_GPIOH_CLK_ENABLE(); } while (0)
+
+
+/* å‡½æ•°å£°æ˜ */
+void adc3_init(void);                                               /* åˆå§‹åŒ–ADC3 */
+uint32_t adc3_get_result(uint32_t channel);                         /* è·å–ADC3ç»“æœ */
+uint32_t adc3_get_result_average(uint32_t channel, uint8_t times);  /* å‡å€¼æ»¤æ³¢è·å–ADC3ç»“æœ */
+int32_t adc3_get_temperature(void);                                 /* è·å–å†…éƒ¨æ¸©åº¦ä¼ æ„Ÿå™¨ç»“æœ */
 
 #endif

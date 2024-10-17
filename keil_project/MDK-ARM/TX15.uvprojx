@@ -425,9 +425,14 @@
               <FilePath>..\Core\Src\i2c.c</FilePath>
             </File>
             <File>
-              <FileName>adc.c</FileName>
+              <FileName>adc1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Core\Src\adc.c</FilePath>
+              <FilePath>..\Core\Src\adc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\adc3.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -578,6 +583,11 @@
               <FileName>tca9539.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\tca9539.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_comom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\adc_comom.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -12,8 +12,7 @@ static void MPU_Config(void);
 uint8_t key_lalue = 0;
 
 uint16_t pwm_value = 51200;
-uint32_t adc_s1 = 0;
-uint32_t adc_s2 = 0;
+
 /**
  * @brief  The application entry point.
  * @retval int
@@ -47,9 +46,7 @@ int main(void)
         trim_scan_Loop();
         switch_scan_Loop();
 		Read_TCP9539_switch_Loop();
-		adc_s1 = adc_get_result_average(ADC_ADC_S1_CHY,10);
-		adc_s2 = adc_get_result_average(ADC_ADC_S2_CHY,10);
-//		adc_s2 = adc1_get_result_average(ADC_CHANNEL_5);
+		ADC_scan_Loop();
         Menu_Display_Loop();
     }
 }

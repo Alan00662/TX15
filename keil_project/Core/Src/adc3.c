@@ -18,7 +18,7 @@
  ****************************************************************************************************
  */
 
-#include "./BSP/ADC/adc3.h"
+#include "adc3.h"
 
 /* ADCæ‰±˙ */
 ADC_HandleTypeDef g_adc3_handle = {0};
@@ -31,6 +31,7 @@ ADC_HandleTypeDef g_adc3_handle = {0};
 void adc3_init(void)
 {
     /* ≈‰÷√ ±÷” */
+	    RCC_PeriphCLKInitTypeDef rcc_periph_clk_init_struct = {0};
     rcc_periph_clk_init_struct.PeriphClockSelection |= RCC_PERIPHCLK_ADC;
     rcc_periph_clk_init_struct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
     HAL_RCCEx_PeriphCLKConfig(&rcc_periph_clk_init_struct);

@@ -510,7 +510,7 @@ void TFT_show_xnum(uint16_t x, uint16_t y, uint32_t num, uint8_t len, tft_num_mo
         }
     }
 
-	TFT_Clear_char(x,y,x + ch_width * 2,y + ch_width * 2,WHITE);
+	TFT_Clear_char(x,y,x + ch_width * 4,y + ch_width * 2,WHITE);
 
 
 	

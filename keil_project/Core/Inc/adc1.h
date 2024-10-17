@@ -1,29 +1,29 @@
 /**
  ****************************************************************************************************
  * @file        adc.h
- * @author      ÕıµãÔ­×ÓÍÅ¶Ó(ALIENTEK)
+ * @author      æ­£ç‚¹åŸå­å›¢é˜Ÿ(ALIENTEK)
  * @version     V1.0
  * @date        2023-06-12
- * @brief       ADCÇı¶¯´úÂë
- * @license     Copyright (c) 2020-2032, ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾
+ * @brief       ADCé©±åŠ¨ä»£ç 
+ * @license     Copyright (c) 2020-2032, å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸
  ****************************************************************************************************
  * @attention
  * 
- * ÊµÑéÆ½Ì¨:ÕıµãÔ­×Ó ±±¼«ĞÇ H750¿ª·¢°å
- * ÔÚÏßÊÓÆµ:www.yuanzige.com
- * ¼¼ÊõÂÛÌ³:www.openedv.com
- * ¹«Ë¾ÍøÖ·:www.alientek.com
- * ¹ºÂòµØÖ·:openedv.taobao.com
+ * å®éªŒå¹³å°:æ­£ç‚¹åŸå­ åŒ—ææ˜Ÿ H750å¼€å‘æ¿
+ * åœ¨çº¿è§†é¢‘:www.yuanzige.com
+ * æŠ€æœ¯è®ºå›:www.openedv.com
+ * å…¬å¸ç½‘å€:www.alientek.com
+ * è´­ä¹°åœ°å€:openedv.taobao.com
  * 
  ****************************************************************************************************
  */
 
-#ifndef __ADC_H
-#define __ADC_H
+#ifndef __ADC1_H
+#define __ADC1_H
 
 #include "main.h"
 
-/* ADC¶¨Òå */
+/* ADCå®šä¹‰ */
 #define ADC_ADC_S1                                ADC1
 #define ADC_ADC_S1_CLK_ENABLE()                   do { __HAL_RCC_ADC12_CLK_ENABLE(); } while (0)
 #define ADC_ADC_S1_CHY                            ADC_CHANNEL_11
@@ -32,7 +32,7 @@
 #define ADC_ADC_S1_CHY_GPIO_CLK_ENABLE()          do { __HAL_RCC_GPIOC_CLK_ENABLE(); } while (0)
 
 
-/* ADC¶¨Òå */
+/* ADCå®šä¹‰ */
 #define ADC_ADC_S2                                ADC1
 #define ADC_ADC_S2_CLK_ENABLE()                   do { __HAL_RCC_ADC12_CLK_ENABLE(); } while (0)
 #define ADC_ADC_S2_CHY                            ADC_CHANNEL_5
@@ -76,14 +76,14 @@
 #define ADC_OS_ADCX_CHY_GPIO_PIN                GPIO_PIN_5
 #define ADC_OS_ADCX_CHY_GPIO_CLK_ENABLE()       do { __HAL_RCC_GPIOA_CLK_ENABLE(); } while (0)
 
-/* º¯ÊıÉùÃ÷ */
-void adc1_init(void);                                                /* ³õÊ¼»¯ADC */
-uint32_t adc_get_result(uint32_t channel);                          /* »ñÈ¡ADC½á¹û */
-uint32_t adc_get_result_average(uint32_t channel, uint8_t times);   /* ¾ùÖµÂË²¨»ñÈ¡ADC½á¹û */
-void adc_dma_init(uint32_t memory_base);                            /* ³õÊ¼»¯ADC DMA¶ÁÈ¡ */
-void adc_dma_enable(uint32_t length);                               /* ¿ªÆôADC DMA¶ÁÈ¡ */
-void adc_nch_dma_init(uint32_t memory_base);                        /* ³õÊ¼»¯¶àÍ¨µÀADC DMA¶ÁÈ¡ */
-void adc_nch_dma_enable(uint32_t length);                           /* ¿ªÆô¶àÍ¨µÀADC DMA¶ÁÈ¡ */
-void adc_oversample_init(uint32_t ratio, uint32_t right_shift);     /* ³õÊ¼»¯ADC¹ı²ÉÑù */
+/* å‡½æ•°å£°æ˜ */
+void adc1_init(void);                                                /* åˆå§‹åŒ–ADC */
+uint32_t adc1_get_result(uint32_t channel);                          /* è·å–ADCç»“æœ */
+uint32_t adc1_get_result_average(uint32_t channel, uint8_t times);   /* å‡å€¼æ»¤æ³¢è·å–ADCç»“æœ */
+void adc1_dma_init(uint32_t memory_base);                            /* åˆå§‹åŒ–ADC DMAè¯»å– */
+void adc1_dma_enable(uint32_t length);                               /* å¼€å¯ADC DMAè¯»å– */
+void adc1_nch_dma_init(uint32_t memory_base);                        /* åˆå§‹åŒ–å¤šé€šé“ADC DMAè¯»å– */
+void adc1_nch_dma_enable(uint32_t length);                           /* å¼€å¯å¤šé€šé“ADC DMAè¯»å– */
+void adc1_oversample_init(uint32_t ratio, uint32_t right_shift);     /* åˆå§‹åŒ–ADCè¿‡é‡‡æ · */
 
 #endif
