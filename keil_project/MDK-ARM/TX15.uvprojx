@@ -424,6 +424,16 @@
               <FileType>1</FileType>
               <FilePath>..\Core\Src\i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>adc1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\adc1.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\adc3.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -519,6 +529,16 @@
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32h7xx_hal_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32h7xx_hal_adc_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_adc_ex.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -563,6 +583,11 @@
               <FileName>tca9539.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\tca9539.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_comom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\adc_comom.c</FilePath>
             </File>
           </Files>
         </Group>

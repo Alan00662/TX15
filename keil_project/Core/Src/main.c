@@ -34,6 +34,7 @@ int main(void)
     TFT_init();
 	MX_I2C4_Init();
 	tca9539_init();
+	adc1_init();
     MX_TIM8_Init();
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
@@ -45,6 +46,7 @@ int main(void)
         trim_scan_Loop();
         switch_scan_Loop();
 		Read_TCP9539_switch_Loop();
+		ADC_scan_Loop();
         Menu_Display_Loop();
     }
 }
