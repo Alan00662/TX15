@@ -6,7 +6,7 @@
 #include "i2c.h"
 #include "tft_display.h"
 #include "interface.h"
-
+#include "usart.h"
 void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t key_lalue = 0;
@@ -35,6 +35,7 @@ int main(void)
 	MX_I2C4_Init();
 	tca9539_init();
 	adc1_init();
+    MX_UART4_Init();
     MX_TIM8_Init();
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
