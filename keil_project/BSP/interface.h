@@ -7,6 +7,7 @@
 #include "tca9539.h"
 #include "adc1.h"
 #include "adc_comom.h"
+#include "hall_stick.h"
 void Menu_Display_Loop(void);
 #endif /* __INTERFACE_H__ */
 

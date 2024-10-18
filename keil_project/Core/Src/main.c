@@ -7,6 +7,7 @@
 #include "tft_display.h"
 #include "interface.h"
 #include "usart.h"
+
 void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t key_lalue = 0;
@@ -44,6 +45,7 @@ int main(void)
     while (1)
     {
         led2_bink(400);
+		
         key_scan_Loop();
         trim_scan_Loop();
         switch_scan_Loop();
