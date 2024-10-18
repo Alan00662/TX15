@@ -11,7 +11,7 @@ void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t key_lalue = 0;
 
-uint16_t pwm_value = 51200;
+uint16_t pwm_value = 60800;
 
 /**
  * @brief  The application entry point.
