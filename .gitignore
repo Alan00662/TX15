@@ -5,4 +5,8 @@ keil_project/MDK-ARM/*.uvprojx
 keil_project/MDK-ARM/*.uvoptx
 keil_project/MDK-ARM/*.lst
 keil_project/MDK-ARM/*.uvguix.*
+keil_project/MDK-ARM/.uvoptx
+# keil_project/MDK-ARM/TX15.uvprojx
+keil_project/MDK-ARM/TX15.uvoptx
+keil_project/MDK-ARM/TX15.uvguix.Admin
 3.5TFT 9针模块蓝板/
