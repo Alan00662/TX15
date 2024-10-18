@@ -41,7 +41,8 @@ extern UART_HandleTypeDef huart4;
 void MX_UART4_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void uart4_send_string(char *str);
+void debug_tx4(char *fmt, ...);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -40,6 +40,7 @@ int main(void)
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
     TFT_Clear(WHITE);
+	debug_tx4("init ok\n");
     while (1)
     {
         led2_bink(400);

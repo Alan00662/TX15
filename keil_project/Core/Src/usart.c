@@ -21,7 +21,10 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart4;
@@ -38,7 +41,7 @@ void MX_UART4_Init(void)
 
   /* USER CODE END UART4_Init 1 */
   huart4.Instance = UART4;
-  huart4.Init.BaudRate = 115200;
+  huart4.Init.BaudRate = 921600;
   huart4.Init.WordLength = UART_WORDLENGTH_8B;
   huart4.Init.StopBits = UART_STOPBITS_1;
   huart4.Init.Parity = UART_PARITY_NONE;
@@ -135,5 +138,65 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void uart4_send_a_byte(uint8_t Data)
+{
+	HAL_UART_Transmit(&huart4, (uint8_t *)&Data,1, 100);
 
+}
+
+void uart4_send_buf(uint8_t *buf, uint8_t len)
+{
+    uint8_t i;
+    for (i = 0; i < len; i++)
+    {
+        uart4_send_a_byte(*(buf + i));
+    }
+}
+
+void uart4_send_string(char *str)
+{
+    uint8_t i;
+    for (i = 0; i < strlen(str); i++)
+    {
+        uart4_send_a_byte(*(str + i));
+    }
+}
+
+void debug_tx4(char *fmt, ...)
+{
+    int len;
+    char buf[200];
+
+    va_list arguments;
+
+    va_start(arguments, fmt);
+    len = vsnprintf(buf, sizeof(buf) - 1, fmt, arguments);
+    va_end(arguments);
+    // uart1_send_buf((uint8_t *)buf, len);
+    uart4_send_string(buf);
+}
+ #if 1
+#pragma import(__use_no_semihosting)             
+//标准库需要的支持函数                 
+struct __FILE 
+{ 
+	int handle; 
+ 
+}; 
+ 
+FILE __stdout;       
+//定义_sys_exit()以避免使用半主机模式    
+void _sys_exit(int x) 
+{ 
+	x = x; 
+} 
+//重定义fputc函数 
+int fputc(int ch, FILE *f)
+{      
+    //二选一,功能一样
+    HAL_UART_Transmit (&huart4 ,(uint8_t *)&ch,1,HAL_MAX_DELAY );
+	return ch;
+    
+}
+#endif
 /* USER CODE END 1 */
