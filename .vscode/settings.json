@@ -15,6 +15,7 @@
         "stdint.h": "c",
         "i2c.h": "c",
         "adc.h": "c",
-        "serial_led.h": "c"
+        "serial_led.h": "c",
+        "rgb.h": "c"
     }
 }

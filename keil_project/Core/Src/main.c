@@ -10,8 +10,8 @@
 void SystemClock_Config(void);
 static void MPU_Config(void);
 uint8_t key_lalue = 0;
-
-uint16_t pwm_value = 51200;
+uint8_t debug_flg = 0;
+uint16_t pwm_value = 60800;
 
 /**
  * @brief  The application entry point.
@@ -32,22 +32,32 @@ int main(void)
     SWITCH_GPIO_init();
     TFT_GPIO_init();
     TFT_init();
+
 	MX_I2C4_Init();
 	tca9539_init();
 	adc1_init();
     MX_TIM8_Init();
+	MX_DMA_Init();
+	MX_TIM2_Init();
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, pwm_value);
+	
+	    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, Hight_Data);
+//	WS2812_Number_4(0xFF0000,0x00FF00,0x0000FF,0x001800);
+	debug_flg = 1;
     TFT_Clear(WHITE);
+
     while (1)
     {
+
         led2_bink(400);
-        key_scan_Loop();
-        trim_scan_Loop();
-        switch_scan_Loop();
-		Read_TCP9539_switch_Loop();
-		ADC_scan_Loop();
-        Menu_Display_Loop();
+//        key_scan_Loop();
+//        trim_scan_Loop();
+//        switch_scan_Loop();
+//		Read_TCP9539_switch_Loop();
+//		ADC_scan_Loop();
+//        Menu_Display_Loop();
     }
 }
 

@@ -434,6 +434,11 @@
               <FileType>1</FileType>
               <FilePath>..\Core\Src\adc3.c</FilePath>
             </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\dma.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -588,6 +593,11 @@
               <FileName>adc_comom.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\adc_comom.c</FilePath>
+            </File>
+            <File>
+              <FileName>RGB.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\RGB.c</FilePath>
             </File>
           </Files>
         </Group>
